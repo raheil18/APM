@@ -289,14 +289,19 @@ p:last-child { margin-bottom: 0; }
 
 /* ── RISKS TABLE ─────────────────────────── */
 .risks { border: 1px solid var(--gray-300); border-radius: 10px; overflow: hidden; }
-.risks-head { display: grid; grid-template-columns: 190px 1fr 1fr; background: var(--gray-50); border-bottom: 1px solid var(--gray-300); }
-.risks-head span { font-family: 'JetBrains Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray-500); padding: 10px 16px; border-right: 1px solid var(--gray-300); }
+.risks-head { display: grid; grid-template-columns: 190px 1fr 1fr; border-bottom: 1px solid var(--gray-300); }
+.risks-head span { font-family: 'JetBrains Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 500; padding: 10px 16px; border-right: 1px solid var(--gray-300); }
 .risks-head span:last-child { border-right: none; }
+.risks-head span:nth-child(1) { background: #FFF7ED; color: #C2410C; }
+.risks-head span:nth-child(2) { background: var(--gray-50); color: var(--gray-500); }
+.risks-head span:nth-child(3) { background: #F0FFF0; color: var(--green-dark); }
 .risk-row { display: grid; grid-template-columns: 190px 1fr 1fr; border-bottom: 1px solid var(--gray-300); }
 .risk-row:last-child { border-bottom: none; }
 .risk-cell { padding: 14px 16px; font-size: 12px; border-right: 1px solid var(--gray-300); line-height: 1.55; color: var(--gray-700); font-weight: 300; }
-.risk-cell:last-child { border-right: none; background: var(--gray-50); }
-.risk-cell.risk-name { font-weight: 600; color: var(--black); font-size: 13px; }
+.risk-cell:last-child { border-right: none; }
+.risk-cell.risk-name { font-weight: 600; color: #9A3412; font-size: 13px; background: #FFFBF5; border-right-color: #FED7AA; }
+.risk-cell.risk-why { background: var(--white); }
+.risk-cell.risk-fix { background: #FAFFFE; color: #1F4D1F; }
 
 /* ── ROADMAP ─────────────────────────────── */
 .roadmap { padding-left: 22px; position: relative; }
@@ -718,23 +723,23 @@ footer { background: var(--black); padding: 28px 40px; display: flex; justify-co
       </div>
       <div class="risk-row">
         <div class="risk-cell risk-name">Partnership deal structure</div>
-        <div class="risk-cell">MFP is owned by Francisco Partners, a PE firm whose interests are commercial, not strategic. A deal requires revenue sharing, data governance, and legal alignment across two independently operated platforms. Without a clear economic model, MFP has no incentive to prioritize this integration.</div>
-        <div class="risk-cell">Proposed structure: Instacart offers MFP a 15 to 20% revenue share on sponsored placement revenue generated from MFP-sourced sessions, plus a fixed co-marketing budget. Phase 1 uses only aggregate goal data (no raw log access) to minimize data governance complexity. Co-marketing partnership first, deeper API second.</div>
+        <div class="risk-cell risk-why">MFP is owned by Francisco Partners, a PE firm whose interests are commercial, not strategic. A deal requires revenue sharing, data governance, and legal alignment across two independently operated platforms. Without a clear economic model, MFP has no incentive to prioritize this integration.</div>
+        <div class="risk-cell risk-fix">Proposed structure: Instacart offers MFP a 15 to 20% revenue share on sponsored placement revenue generated from MFP-sourced sessions, plus a fixed co-marketing budget. Phase 1 uses only aggregate goal data (no raw log access) to minimize data governance complexity. Co-marketing partnership first, deeper API second.</div>
       </div>
       <div class="risk-row">
         <div class="risk-cell risk-name">User privacy backlash</div>
-        <div class="risk-cell">Health data is highly sensitive. Users may feel their nutrition goals are being used to target them commercially. Post-FTC settlement, Instacart's trust capital is already under pressure.</div>
-        <div class="risk-cell">Explicit layered consent at account connection. Opt-in only for ad personalization, separate from data sharing for cart suggestions. Clear UI disclosures throughout. Pause immediately if complaint rate exceeds 0.5% of connected accounts.</div>
+        <div class="risk-cell risk-why">Health data is highly sensitive. Users may feel their nutrition goals are being used to target them commercially. Post-FTC settlement, Instacart's trust capital is already under pressure.</div>
+        <div class="risk-cell risk-fix">Explicit layered consent at account connection. Opt-in only for ad personalization, separate from data sharing for cart suggestions. Clear UI disclosures throughout. Pause immediately if complaint rate exceeds 0.5% of connected accounts.</div>
       </div>
       <div class="risk-row">
         <div class="risk-cell risk-name">MFP data quality</div>
-        <div class="risk-cell">MFP's logged data is user-generated and inconsistent. Many users log meals after eating, not before. Intent inference requires sufficient data density to be actionable.</div>
-        <div class="risk-cell">Target users with 30-plus day logging streaks for Phase 1. Build fallback logic to macro goal settings, which are more stable, when recent logs are sparse.</div>
+        <div class="risk-cell risk-why">MFP's logged data is user-generated and inconsistent. Many users log meals after eating, not before. Intent inference requires sufficient data density to be actionable.</div>
+        <div class="risk-cell risk-fix">Target users with 30-plus day logging streaks for Phase 1. Build fallback logic to macro goal settings, which are more stable, when recent logs are sparse.</div>
       </div>
       <div class="risk-row">
         <div class="risk-cell risk-name">Low activation rate</div>
-        <div class="risk-cell">The hypothesis depends on users acting on macro-triggered prompts. If the handoff creates too much friction, conversion will be low and the ad surface loses its premium positioning before CPG brands see meaningful ROAS data.</div>
-        <div class="risk-cell">Deep-link directly into a pre-built Instacart cart with items already added. Minimize taps between prompt and checkout. A/B test trigger timing. Phase 1 kill threshold: if conversion rate is below 15% after 8 weeks, pause and diagnose before Phase 2.</div>
+        <div class="risk-cell risk-why">The hypothesis depends on users acting on macro-triggered prompts. If the handoff creates too much friction, conversion will be low and the ad surface loses its premium positioning before CPG brands see meaningful ROAS data.</div>
+        <div class="risk-cell risk-fix">Deep-link directly into a pre-built Instacart cart with items already added. Minimize taps between prompt and checkout. A/B test trigger timing. Phase 1 kill threshold: if conversion rate is below 15% after 8 weeks, pause and diagnose before Phase 2.</div>
       </div>
     </div>
   </div>
